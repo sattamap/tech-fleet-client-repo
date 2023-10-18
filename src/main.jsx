@@ -8,9 +8,10 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import MainLayout from './layout/MainLayout';
-import AddProduct from './components/AddProduct/AddProduct';
-import MyCart from './components/MyCart/MyCart';
-import Login from './components/Login/Login';
+import Home from './pages/Home/Home';
+import AddProduct from './pages/AddProduct/AddProduct';
+import MyCart from './pages/MyCart/MyCart';
+import Login from './pages/Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -19,18 +20,22 @@ const router = createBrowserRouter([
     children: [
 
       {
+          path: "/",
+          element: <Home></Home>,
+      },
+      {
           path: "/product",
           element: <AddProduct></AddProduct>,
       },
       {
           path: "/cart",
-          element: <MyCart></MyCart>,
+          element:<MyCart></MyCart>,
           
       }
       ,
       {
           path: "/login",
-          element: <Login></Login>,
+          element:<Login></Login>,
          
       }
   ]
