@@ -1,41 +1,50 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Register = () => {
-
+    const {createUser, setUser} = useContext(AuthContext);
+    const navigate = useNavigate();
+    
     const handleRegister = (e) => {
         e.preventDefault();
-        const form =e.target;
-        const name = form.name.value;
-        const photoURL = form.photoURL.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        
-        const newUser = { name, photoURL, email, password };
-        console.log(newUser);
-        fetch('http://localhost:5000/user',{
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(newUser),
-        })
-          .then(res=>res.json())
-          .then(data=>{
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Data added successfully',
-                    icon: 'success',
-                    confirmButtonText: 'ok'
-                  })
-              form.reset();
-            }
+        const form = new FormData(e.currentTarget);
+
+        const name = form.get('name');
+        const photoURL = form.get('photoURL');
+        const email = form.get('email');
+        const password = form.get('password');
+        // if (
+        //     password.length < 6 ||
+        //     !/[A-Z]/.test(password) ||
+        //     !/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)
+        //   ) {
+        //     swal('Error', 'Password does not meet the criteria.', 'error');
+        //     return; // Exit the function if password is invalid
+        //   }
+        createUser(name, email, password, photoURL)
+          .then(() => {
+            setUser(null);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data added successfully',
+                icon: 'success',
+                confirmButtonText: 'ok'
+              }).then(() => {
+              navigate("/login");
+            });
           })
-      
-       
+          .catch((error) => {
+            console.error(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Registration Failed',
+                icon: 'error',
+                confirmButtonText: 'ok'
+              });
+          });
       };
       
     return (
