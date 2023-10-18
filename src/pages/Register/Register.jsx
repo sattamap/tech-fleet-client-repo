@@ -1,24 +1,40 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        const form = new FormData(e.currentTarget);
-
-        const name = form.get('name');
-        const photoURL = form.get('photoURL');
-        const email = form.get('email');
-        const password = form.get('password');
-        if (
-            password.length < 6 ||
-            !/[A-Z]/.test(password) ||
-            !/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)
-          ) {
-            swal('Error', 'Password does not meet the criteria.', 'error');
-            return; // Exit the function if password is invalid
-          }
+        const form =e.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        const newUser = { name, photoURL, email, password };
+        console.log(newUser);
+        fetch('http://localhost:5000/user',{
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Data added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                  })
+              form.reset();
+            }
+          })
+      
        
       };
       
@@ -26,7 +42,7 @@ const Register = () => {
         <div>
             <div >
                 <h2 className="text-xl text-center">Register Yourself</h2>
-                <form  className="card-body md:w-3/4 lg:w-1/2 mx-auto">
+                <form onSubmit={handleRegister} className="card-body md:w-3/4 lg:w-1/2 mx-auto">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Name</span>
