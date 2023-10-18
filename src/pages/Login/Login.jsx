@@ -33,7 +33,7 @@ const Login = () => {
     .catch((error) => {
       console.error(error);
       // Show an error message using SweetAlert
-      swal({
+      Swal({
         title: 'Firebase Error',
         text: error.message,
         icon: 'error',
