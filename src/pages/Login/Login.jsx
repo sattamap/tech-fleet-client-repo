@@ -1,33 +1,46 @@
-import { Link } from "react-router-dom";
-// import Swal from "sweetalert2";
+import { useContext } from "react";
+import {  Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
     const handleLogin = (e) => {
         e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-      
-        const loginData = { email, password };
-        
-        fetch('http://localhost:5000/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(loginData),
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            // Successful login, you can perform actions like redirecting to a dashboard.
-            // You might also want to store authentication tokens or session data.
-          } else {
-            // Login failed, display an error message or handle it appropriately.
-          }
-        });
-      };
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+
+
+    signIn(email, password)
+    .then((result) => {
+      console.log(result.user);
+      // Show a success message using SweetAlert
+      Swal.fire({
+        title: 'Success!',
+        text: 'Login successfully',
+        icon: 'success',
+        confirmButtonText: 'ok'
+      });
+      // Navigate to the desired location
+      navigate(location?.state ? location.state : '/');
+    })
+    .catch((error) => {
+      console.error(error);
+      // Show an error message using SweetAlert
+      swal({
+        title: 'Firebase Error',
+        text: error.message,
+        icon: 'error',
+        button: 'OK',
+      });
+    });
+};
       
     
    
