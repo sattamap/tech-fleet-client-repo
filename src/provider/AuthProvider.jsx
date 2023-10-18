@@ -1,5 +1,5 @@
-import { createContext, useState} from "react";
-import { createUserWithEmailAndPassword, getAuth,  signInWithEmailAndPassword,  updateProfile } from "firebase/auth";
+import { createContext, useEffect, useState} from "react";
+import { createUserWithEmailAndPassword, getAuth,  onAuthStateChanged,  signInWithEmailAndPassword,  signOut,  updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 
@@ -38,6 +38,37 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth,email,password);
     }
 
+
+
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log("user in auth state", currentUser);
+            setUser(currentUser);
+            setLoading(false);
+          });
+      
+    
+        // Fetch JSON data directly in the useEffect
+        // You can use fetch or any other method to fetch your data
+        // fetch("/eventServices.json") // Replace with the actual path
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     setJsonData(data);
+        //     console.log(data);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error fetching JSON data:", error);
+        //   });
+
+          return () => {
+            unSubscribe();
+          };
+      }, []);
+
   
 
 
@@ -47,6 +78,7 @@ const AuthProvider = ({children}) => {
         setUser,
         createUser,
         signIn,
+        logOut,
         loading,
         setLoading,
    

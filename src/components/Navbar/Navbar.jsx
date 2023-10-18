@@ -1,7 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { FaUserAlt } from 'react-icons/fa';
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user);
+   
+    const handleLogOut = () => {
+        logOut()
+          .then(result => {
+            console.log(result.user);
+    
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
     return (
         <div>
            <div className="max-w-[1300px] mx-auto navbar py-14">
@@ -62,6 +79,53 @@ const Navbar = () => {
                 </ul>
 
             </div>
+            
+        <div className="navbar-end">
+
+
+
+{user ? (
+  // If the user is logged in, show their profile picture, first name, and a logout button
+  <div className="nav-item">
+    {user.photoURL ? (
+      <img
+        src={user.photoURL}
+        alt={`${user.displayName}'s Profile`}
+        className="btn btn-ghost btn-circle avatar"
+      />
+    ) : (
+      <FaUserAlt className="btn btn-ghost btn-circle avatar" />
+    )}
+    <span className="nav-link mx-2">
+      Welcome, {user.displayName?.split(" ")[0]}!
+    </span>
+    <button className="btn btn-secondary mx-2" onClick={handleLogOut}>
+      Logout
+    </button> <Link to="/register" className="btn btn-primary">
+      Register
+    </Link>
+  </div>
+) : (
+  // If the user is not logged in, show the login button
+
+
+  <div className="nav-item">
+    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+      <div>
+        <FaUserAlt></FaUserAlt>
+      </div>
+    </label>
+    <Link to="/login" className="btn btn-primary mx-2">
+      Login
+    </Link>
+    <Link to="/register" className="btn btn-primary">
+      Register
+    </Link>
+  </div>
+
+)}
+
+</div>
         </div>
             
         </div>
