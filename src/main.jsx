@@ -14,6 +14,7 @@ import MyCart from './pages/MyCart/MyCart';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthProvider from './provider/AuthProvider';
+import ProtectedRoutes from './ProtectedRoutes/ProtectedRoutes';
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,11 @@ const router = createBrowserRouter([
       },
       {
           path: "/product",
-          element: <AddProduct></AddProduct>,
+          element: <ProtectedRoutes><AddProduct></AddProduct></ProtectedRoutes>,
       },
       {
           path: "/cart",
-          element:<MyCart></MyCart>,
+          element:<ProtectedRoutes><MyCart></MyCart></ProtectedRoutes>,
           
       },
       {
