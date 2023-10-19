@@ -14,6 +14,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const [carts, setCarts] = useState([]);
     
     
     const createUser = (name, email, password, photoURL) => {
@@ -79,6 +80,7 @@ const AuthProvider = ({children}) => {
         loading,
         setLoading,
         products,
+        carts,
    
     
     };

@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
           path: "/cart",
-          element:<MyCart></MyCart>,
+          element: <ProtectedRoutes><MyCart></MyCart></ProtectedRoutes>,
           
       },
       {
