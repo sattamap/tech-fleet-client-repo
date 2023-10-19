@@ -16,6 +16,7 @@ import Register from './pages/Register/Register';
 import AuthProvider from './provider/AuthProvider';
 import ProtectedRoutes from './ProtectedRoutes/ProtectedRoutes';
 import BrandProducts from './pages/BrandProducts/BrandProducts';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
           path: "/products/:brandName",
           element: <BrandProducts></BrandProducts>,
+      },
+      {
+        path:"/detail/:id",
+        element:<ProductDetail></ProductDetail>,
       },
       {
           path: "/cart",

@@ -13,6 +13,7 @@ const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
     
     
     const createUser = (name, email, password, photoURL) => {
@@ -50,20 +51,16 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             setLoading(false);
           });
-      
-    
-        // Fetch JSON data directly in the useEffect
-        // You can use fetch or any other method to fetch your data
-        // fetch("/eventServices.json") // Replace with the actual path
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     setJsonData(data);
-        //     console.log(data);
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error fetching JSON data:", error);
-        //   });
 
+          fetch("http://localhost:5000/products")
+          .then((response) => response.json())
+          .then((data) => {
+            setProducts(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      
           return () => {
             unSubscribe();
           };
@@ -81,6 +78,7 @@ const AuthProvider = ({children}) => {
         logOut,
         loading,
         setLoading,
+        products,
    
     
     };
