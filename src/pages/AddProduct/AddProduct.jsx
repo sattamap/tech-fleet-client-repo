@@ -34,6 +34,7 @@ const AddProduct = () => {
             icon: "success",
             confirmButtonText: "ok",
           });
+          form.reset();
         }
       });
   };
