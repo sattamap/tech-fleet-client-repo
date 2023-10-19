@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 
 const MyCart = () => {
@@ -6,11 +7,13 @@ const MyCart = () => {
     const [loading, setLoading] = useState(true);
     const [carts, setCarts] = useState([]);
 
+    
+    
     useEffect(() => {
         fetch("http://localhost:5000/cart")
             .then((response) => response.json())
             .then((data) => {
-                console.log("Cart Data:", data);
+                // console.log("Cart Data:", data);
                 // Update the cart data in your context provider
                 // Assuming you have a function to set the cart data in your context
                 // Replace 'setCartDataInContext' with the actual function name
@@ -21,10 +24,46 @@ const MyCart = () => {
                 console.error("Error fetching carts:", error);
             });
     }, []);
-
+    
     if (loading) {
         return <div>Loading...</div>;
     }
+
+    const handleDelete = id =>{
+         console.log('want to delete:',id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/carts/${id}`,{
+                    method: 'DELETE'
+                })
+        
+                    .then(res=>res.json())
+                    .then(data=>{
+                        console.log(data);
+                        if (data.deletedCount === 1) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                              )
+                            const remaining = carts.filter(cart => cart._id!== id);
+                            setCarts(remaining);
+                        }
+                    })
+           
+            }
+          })
+     
+        }
+
 
     return (
         <div className="max-w-[1300px] mx-auto">
@@ -59,7 +98,7 @@ const MyCart = () => {
                                 <td>{cart.type}</td>
                                 <td>{cart.price}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">Delete</button>
+                                    <button onClick={ () => handleDelete(cart._id)} className="btn btn-ghost btn-xs">Delete</button>
                                 </th>
                             </tr>
                         </tbody>
