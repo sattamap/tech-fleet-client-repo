@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const BrandProducts = () => {
   const { brandName } = useParams();
@@ -14,7 +15,17 @@ const BrandProducts = () => {
         const filteredData = data.filter((item) => item.bandName === brandName);
 
         // Update your component state with the filtered data
-        setProducts(filteredData);
+        if (filteredData.length === 0) {
+            // No data available for the brand, show a sweet alert
+            Swal.fire({
+              icon: 'error',
+              title: 'No Products Available',
+              text: 'There are no products available for this brand.',
+            });
+          } else {
+            // Update your component state with the filtered data
+            setProducts(filteredData);
+          }
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
