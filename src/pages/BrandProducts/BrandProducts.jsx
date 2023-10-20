@@ -14,7 +14,7 @@ const BrandProducts = () => {
     const [productImages, setProductImages] = useState([]);
 
     useEffect(() => {
-        fetch('https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/products')
+        fetch('https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app/products')
             .then((response) => response.json())
             .then((data) => {
                 const filteredData = data.filter((item) => item?.bandName === brandName);

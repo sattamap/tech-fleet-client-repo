@@ -18,7 +18,7 @@ const AddProduct = () => {
     const newProduct = { image, name, bandName, type, price, description,rating};
 
     console.log(newProduct);
-    fetch("https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/products", {
+    fetch("https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

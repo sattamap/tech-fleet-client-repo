@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import MainLayout from './layout/MainLayout';
-import Home from './pages/Home/Home';
+
 import AddProduct from './pages/AddProduct/AddProduct';
 import MyCart from './pages/MyCart/MyCart';
 import Login from './pages/Login/Login';
@@ -19,6 +19,7 @@ import BrandProducts from './pages/BrandProducts/BrandProducts';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Update from './pages/Update/Update';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import Home from './pages/Home/Home';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       {
           path: "/",
           element: <Home></Home>,
-          loader: ()=> fetch('https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/brand'),
+          loader: ()=> fetch('https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app/brand'),
       },
       {
           path: "/product",
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       {
         path:"/update/:id",
         element: <ProtectedRoutes><Update></Update></ProtectedRoutes>,
-        loader: ({params})=> fetch(`https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/products/${params.id}`),
+        loader: ({params})=> fetch(`https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app/products/${params.id}`),
       },
       {
           path: "/cart",
