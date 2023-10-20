@@ -16,14 +16,19 @@ const Register = () => {
         const photoURL = form.get('photoURL');
         const email = form.get('email');
         const password = form.get('password');
-        // if (
-        //     password.length < 6 ||
-        //     !/[A-Z]/.test(password) ||
-        //     !/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)
-        //   ) {
-        //     swal('Error', 'Password does not meet the criteria.', 'error');
-        //     return; // Exit the function if password is invalid
-        //   }
+        if (
+            password.length < 6 ||
+            !/[A-Z]/.test(password) ||
+            !/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)
+          ) {
+            Swal.fire({
+              title: "Error",
+              text: "Password does not meet the criteria.",
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+            return; // Exit the function if the password is invalid
+          }
         createUser(name, email, password, photoURL)
           .then(() => {
             setUser(null);

@@ -34,11 +34,11 @@ const Login = () => {
     .catch((error) => {
       console.error(error);
       // Show an error message using SweetAlert
-      Swal({
-        title: 'Firebase Error',
-        text: error.message,
+      Swal.fire({
+        title: 'Error!',
+        text: 'Login Again',
         icon: 'error',
-        button: 'OK',
+        confirmButtonText: 'ok'
       });
     });
 };
@@ -48,21 +48,21 @@ const handleGoogleSignIn = () =>{
     .then(result => {
         const user = result.user;
         console.log(user);
-        Swal({
-            title: 'Login Successful',
-            text: 'You are now logged in.',
+        Swal.fire({
+            title: 'Success!',
+            text: 'Login successfully',
             icon: 'success',
-            button: 'OK',
+            confirmButtonText: 'ok'
           });
         navigate( '/' )
     })
     .catch(error=>{
         console.log(error.message);
-        swal({
-            title: 'Firebase Error',
-            text: error.message,
+        Swal.fire({
+            title: 'Error!',
+            text: 'Login Again',
             icon: 'error',
-            button: 'OK',
+            confirmButtonText: 'ok'
           });
     })
 }
