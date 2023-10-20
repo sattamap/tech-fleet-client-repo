@@ -2,10 +2,11 @@ import { useContext } from "react";
 import {  Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { FcGoogle } from 'react-icons/fc';
 
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -42,12 +43,34 @@ const Login = () => {
     });
 };
       
-    
+const handleGoogleSignIn = () =>{
+    googleSignIn()
+    .then(result => {
+        const user = result.user;
+        console.log(user);
+        Swal({
+            title: 'Login Successful',
+            text: 'You are now logged in.',
+            icon: 'success',
+            button: 'OK',
+          });
+        navigate( '/' )
+    })
+    .catch(error=>{
+        console.log(error.message);
+        swal({
+            title: 'Firebase Error',
+            text: error.message,
+            icon: 'error',
+            button: 'OK',
+          });
+    })
+}
    
 
     return (
         <div>
-             <div className="mt-10">
+             <div className="mt-5">
             <h2 className="text-xl text-center">Login Yourself</h2>
 
 
@@ -72,8 +95,24 @@ const Login = () => {
     </div>
    
 </form>
+ <div className="card-body md:w-3/4 lg:w-1/2 mx-auto">
+ <div className="divider">OR</div>
+    <div className='flex justify-between p-4 space-y-2'>
+          <div  className="flex-grow border-r-2 pr-24">
+          <h2 className="font-bold text-lg">Login With</h2>
+            <button onClick={handleGoogleSignIn} className="btn btn-outline w-full mt-2 mr-8">
+               <FcGoogle></FcGoogle>
+                Google
+            </button>
+          </div>
+            <div  className=" flex-grow">
+            <p className="text-center">Do not have any Account <Link className="text-lime-700 font-bold" to="/register">Register</Link></p>
+            </div>
+           </div>
+        
+ </div>
 
-<p className="text-center">Do not have any Account <Link className="text-lime-700 font-bold" to="/register">Register</Link></p>
+
             </div>
         </div>
     );
