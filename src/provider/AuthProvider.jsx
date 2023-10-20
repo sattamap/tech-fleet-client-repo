@@ -58,7 +58,7 @@ const AuthProvider = ({children}) => {
             setLoading(false);
           });
 
-          fetch("https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app/products")
+          fetch("https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/products")
           .then((response) => response.json())
           .then((data) => {
             setProducts(data);

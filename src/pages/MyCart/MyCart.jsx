@@ -10,7 +10,7 @@ const MyCart = () => {
     
     
     useEffect(() => {
-        fetch("https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app/cart")
+        fetch("https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/cart")
             .then((response) => response.json())
             .then((data) => {
                 // console.log("Cart Data:", data);
@@ -41,7 +41,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://tech-fleet-server-4kaem7qlc-sattam-chakmas-projects.vercel.app//carts/${id}`,{
+                fetch(`https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app//carts/${id}`,{
                     method: 'DELETE'
                 })
         

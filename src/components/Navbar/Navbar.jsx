@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaUserAlt } from 'react-icons/fa';
+import logo from '../../assets/logo.png';
 
 
 const Navbar = () => {
@@ -23,7 +24,7 @@ const Navbar = () => {
         <div>
            <div className="max-w-[1300px] mx-auto navbar py-14">
             <div className="flex-1">
-                <img  src="" alt="" />
+                <img  src={logo} alt="" className="w-10" />
                 <h1 className="text-2xl font-extrabold">Tech<span className=" text-emerald-600">Fleet</span></h1>
             </div>
             <div className="flex-none">
@@ -115,9 +116,7 @@ const Navbar = () => {
         <FaUserAlt></FaUserAlt>
       </div>
     </label>
-    <Link to="/login" className="btn btn-primary mx-2">
-      Login
-    </Link>
+   
     <Link to="/register" className="btn btn-primary">
       Register
     </Link>
