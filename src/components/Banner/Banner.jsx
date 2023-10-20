@@ -19,7 +19,7 @@ const Banner = () => {
     <div className="max-w-md absolute  right-52 top-1/3" >
       <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"><h1 className="text-5xl font-bold">Explore the Latest Innovations</h1></div>
+     data-aos-duration="2000"><h1 className="text-5xl font-bold text-red-700">Explore the Latest Innovations</h1></div>
       <div data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="1500"> <p className="py-6">We are ready to find your perfect technology.Simplify your life with Google tech solutions</p>
@@ -37,7 +37,7 @@ const Banner = () => {
     <div className="max-w-md absolute  right-52 top-1/3" >
       <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"><h1 className="text-5xl font-bold">Power Your Devices with Intel and Microsoft</h1></div>
+     data-aos-duration="2000"><h1 className="text-5xl font-bold text-fuchsia-900">Power Your Devices with Intel and Microsoft</h1></div>
       <div data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="1500"> <p className="py-6">We are ready to find your perfect technology.Intel and Microsoft: Your tech partners for life</p>

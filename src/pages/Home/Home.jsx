@@ -9,7 +9,13 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className='max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-10'>
+            <h2 className="text-lg font-poppin text-center mt-24 mb-10">Our Brands</h2>
+            <h2 className="text-4xl text-center">WELCOME TO TECH WORLD</h2>
+            <div className="divider mb-10">We explore everything</div>
+
+
+            <div className='max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-24'>
+                
     {
         brands.map(brand => <BrandCard key={brand._id} brand={brand}></BrandCard>)
       }
