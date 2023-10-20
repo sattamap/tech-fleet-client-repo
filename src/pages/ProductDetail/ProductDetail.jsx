@@ -1,17 +1,39 @@
-import { useContext } from "react";
+import {  useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const ProductDetail = () => {
 
     const { id } = useParams();
-    const { products } = useContext(AuthContext);
-    const productDetail = products.find((product) => product._id === id);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
     
+    
+    
+    useEffect(() => {
+        fetch("http://localhost:5000/products")
+            .then((response) => response.json())
+            .then((data) => {
+                // console.log("Cart Data:", data);
+                // Update the cart data in your context provider
+                // Assuming you have a function to set the cart data in your context
+                // Replace 'setCartDataInContext' with the actual function name
+                setProducts(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching carts:", error);
+            });
+    }, []);
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    const productDetail = products.find((product) => product._id === id);
+
     const handleAddToCart = () => {
         // Assuming you have a server route to add the product to the cart
-        fetch("https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/cart", {
+        fetch("http://localhost:5000/carts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -14,10 +14,10 @@ const BrandProducts = () => {
     const [productImages, setProductImages] = useState([]);
 
     useEffect(() => {
-        fetch('https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/products')
+        fetch('http://localhost:5000/products')
             .then((response) => response.json())
             .then((data) => {
-                const filteredData = data.filter((item) => item?.bandName === brandName);
+                const filteredData = data.filter((item) => item?.brandName === brandName);
                 if (filteredData.length === 0) {
                     Swal.fire({
                         icon: 'error',

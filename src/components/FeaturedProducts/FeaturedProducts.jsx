@@ -2,14 +2,32 @@
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import f1 from '../../assets/f1.jpg';
-import f2 from '../../assets/f2.jpg';
-import f3 from '../../assets/f3.jpg';
-import f4 from '../../assets/f4.jpg';
+// import f1 from '../../assets/f1.jpg';
+// import f2 from '../../assets/f2.jpg';
+// import f3 from '../../assets/f3.jpg';
+// import f4 from '../../assets/f4.jpg';
+import { useEffect, useState } from 'react';
 
 const FeaturedProducts = () => {
+    const [featured, setFeatured] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-
+    useEffect(() => {
+        fetch("http://localhost:5000/featured")
+            .then((response) => response.json())
+            .then((data) => {
+                setFeatured(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching carts:", error);
+            });
+    }, []);
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    console.log(typeof(featured));
    
     return (
         <div className="max-w-[1300px] mx-auto  mt-20 ">
@@ -43,59 +61,25 @@ const FeaturedProducts = () => {
           )
         }
         
-      >
-             <div className="card w-72 bg-base-100 shadow-xl">
-                <figure><img src={f1} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">
-                        iPhone 15 Pro Max 
-                        <div className="badge badge-secondary">Featured</div>
-                    </h2>
-                    <p>Price: $1200</p>
-                    <div className="card-actions justify-end">
-                        
-                    </div>
-                </div>
-            </div>
-            <div className="card w-72 bg-base-100 shadow-xl">
-                <figure><img src={f2} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">
-                        iPhone 15 Pro Max 
-                        <div className="badge badge-secondary">Featured</div>
-                    </h2>
-                    <p>Price: $1200</p>
-                    <div className="card-actions justify-end">
-                        
-                    </div>
-                </div>
-            </div>
-            <div className="card w-72 bg-base-100 shadow-xl">
-                <figure><img src={f3} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">
-                        iPhone 15 Pro Max 
-                        <div className="badge badge-secondary">Featured</div>
-                    </h2>
-                    <p>Price: $1200</p>
-                    <div className="card-actions justify-end">
-                        
-                    </div>
-                </div>
-            </div>
-            <div className="card w-72 bg-base-100 shadow-xl">
-                <figure><img src={f4} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">
-                        iPhone 15 Pro Max 
-                        <div className="badge badge-secondary">Featured</div>
-                    </h2>
-                    <p>Price: $1200</p>
-                    <div className="card-actions justify-end">
-                        
-                    </div>
-                </div>
-            </div>
+      > 
+        {featured.map((item) => ( 
+
+<div key={item._id} className="card w-72 bg-base-100 shadow-xl">
+<figure><img src={item.image} alt="Shoes" /></figure>
+<div className="card-body">
+    <h2 className="card-title">
+        {item.name}
+        <div className="badge badge-secondary">Featured</div>
+    </h2>
+    <p>Price: {item.price}</p>
+    <div className="card-actions justify-end">
+        
+    </div>
+</div>
+</div>
+        ))}
+             
+        
             </Carousel>
 
              </div>
@@ -104,3 +88,49 @@ const FeaturedProducts = () => {
 };
 
 export default FeaturedProducts;
+
+
+
+
+
+
+
+// <div className="card w-72 bg-base-100 shadow-xl">
+// <figure><img src={f2} alt="Shoes" /></figure>
+// <div className="card-body">
+//     <h2 className="card-title">
+//         iPhone 15 Pro Max 
+//         <div className="badge badge-secondary">Featured</div>
+//     </h2>
+//     <p>Price: $1200</p>
+//     <div className="card-actions justify-end">
+        
+//     </div>
+// </div>
+// </div>
+// <div className="card w-72 bg-base-100 shadow-xl">
+// <figure><img src={f3} alt="Shoes" /></figure>
+// <div className="card-body">
+//     <h2 className="card-title">
+//         iPhone 15 Pro Max 
+//         <div className="badge badge-secondary">Featured</div>
+//     </h2>
+//     <p>Price: $1200</p>
+//     <div className="card-actions justify-end">
+        
+//     </div>
+// </div>
+// </div>
+// <div className="card w-72 bg-base-100 shadow-xl">
+// <figure><img src={f4} alt="Shoes" /></figure>
+// <div className="card-body">
+//     <h2 className="card-title">
+//         iPhone 15 Pro Max 
+//         <div className="badge badge-secondary">Featured</div>
+//     </h2>
+//     <p>Price: $1200</p>
+//     <div className="card-actions justify-end">
+        
+//     </div>
+// </div>
+// </div>

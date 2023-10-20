@@ -5,22 +5,25 @@ const Update = () => {
    
     const products = useLoaderData();
     
-
+    const{_id, image, name, brandName, type, price, description,rating } = products;
+    
+    console.log(products);
     const handleUpdateProduct = event =>{
         event.preventDefault();
     const form = event.target;
     const image = form.image.value;
     const name = form.name.value;
-    const bandName = form.bandName.value;
+    const brandName = form.brandName.value;
     const type = form.type.value;
     const price = form.price.value;
     const description = form.description.value;
+    const rating = form.rating.value;
 
-    const updateProduct = { image, name, bandName, type, price, description };
+    const updateProduct = { image, name, brandName, type, price, description,rating };
 
       
         console.log(updateProduct);
-        fetch(`https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/products/${products._id}`,{
+        fetch(`http://localhost:5000/products/${_id}`,{
             method: 'PUT',
             headers: {
                 'content-type':'application/json'
@@ -36,10 +39,12 @@ const Update = () => {
                         text: 'Product updated successfully',
                         icon: 'success',
                         confirmButtonText: 'ok'
-                      }).then(() => {
-                        // After updating, navigate back to the BrandProducts page
-                        window.location.reload();
-                    });
+                      })
+                      
+                    //   .then(() => {
+                    //     // After updating, navigate back to the BrandProducts page
+                    //     window.location.reload();
+                    // });
                 }
             })
 
@@ -61,7 +66,7 @@ const Update = () => {
             <input
               type="text"
               name="image"
-              defaultValue={products?.image}
+              defaultValue={image}
               placeholder="Image URL"
               className="input input-bordered"
               required
@@ -74,7 +79,7 @@ const Update = () => {
             <input
               type="text"
               name="name"
-              defaultValue={products?.name}
+              defaultValue={name}
               placeholder="Name"
               className="input input-bordered"
               required
@@ -86,8 +91,8 @@ const Update = () => {
             </label>
             <input
               type="text"
-              name="bandName"
-              defaultValue={products?.bandName}
+              name="brandName"
+              defaultValue={brandName}
               placeholder="Brand Name"
               className="input input-bordered"
               required
@@ -100,7 +105,7 @@ const Update = () => {
             <input
               type="text"
               name="type"
-              defaultValue={products?.type}
+              defaultValue={type}
               placeholder="Type"
               className="input input-bordered"
               required
@@ -114,7 +119,7 @@ const Update = () => {
             <input
               type="text"
               name="price"
-              defaultValue={products?.price}
+              defaultValue={price}
               placeholder="Price"
               className="input input-bordered"
               required
@@ -128,7 +133,7 @@ const Update = () => {
             <input
               type="text"
               name="description"
-              defaultValue={products?.description}
+              defaultValue={description}
               placeholder="Short Description"
               className="input input-bordered"
               required
@@ -142,7 +147,7 @@ const Update = () => {
   <input
     type="number"
     name="rating"
-    defaultValue={products?.rating}
+    defaultValue={rating}
     placeholder="Rating"
     className="input input-bordered"
     required

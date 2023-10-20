@@ -9,16 +9,16 @@ const AddProduct = () => {
     const form = event.target;
     const image = form.image.value;
     const name = form.name.value;
-    const bandName = form.bandName.value;
+    const brandName = form.brandName.value;
     const type = form.type.value;
     const price = form.price.value;
     const description = form.description.value;
     const rating = form.rating.value;
 
-    const newProduct = { image, name, bandName, type, price, description,rating};
+    const newProduct = { image, name, brandName, type, price, description,rating};
 
     console.log(newProduct);
-    fetch("https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/products", {
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -91,7 +91,7 @@ const AddProduct = () => {
             </label>
             <input
               type="text"
-              name="bandName"
+              name="brandName"
               placeholder="Brand Name"
               className="input input-bordered"
               required

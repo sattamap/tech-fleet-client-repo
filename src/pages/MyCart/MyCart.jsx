@@ -10,7 +10,7 @@ const MyCart = () => {
     
     
     useEffect(() => {
-        fetch("https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/cart")
+        fetch("http://localhost:5000/carts")
             .then((response) => response.json())
             .then((data) => {
                 // console.log("Cart Data:", data);
@@ -41,7 +41,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app//carts/${id}`,{
+                fetch(`http://localhost:5000/cart/${id}`,{
                     method: 'DELETE'
                 })
         
@@ -95,7 +95,7 @@ const MyCart = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td>{cart.type}</td>
+                                <td>{cart.type}{cart._id}</td>
                                 <td>{cart.price}</td>
                                 <th>
                                     <button onClick={ () => handleDelete(cart._id)} className="btn btn-ghost btn-xs">Delete</button>

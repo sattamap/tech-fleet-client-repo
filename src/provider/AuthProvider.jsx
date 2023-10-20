@@ -14,8 +14,8 @@ const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [products, setProducts] = useState([]);
-    const [carts, setCarts] = useState([]);
+    
+   
     
     
     const createUser = (name, email, password, photoURL) => {
@@ -57,15 +57,6 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             setLoading(false);
           });
-
-          fetch("https://tech-fleet-server-jfp9pf6zl-sattam-chakmas-projects.vercel.app/products")
-          .then((response) => response.json())
-          .then((data) => {
-            setProducts(data);
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
       
           return () => {
             unSubscribe();
@@ -84,11 +75,7 @@ const AuthProvider = ({children}) => {
         googleSignIn,
         logOut,
         loading,
-        setLoading,
-        products,
-        carts,
-   
-    
+        setLoading
     };
     return (
         <AuthContext.Provider value={authInfo}>
