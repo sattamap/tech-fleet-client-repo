@@ -17,11 +17,14 @@ import AuthProvider from './provider/AuthProvider';
 import ProtectedRoutes from './ProtectedRoutes/ProtectedRoutes';
 import BrandProducts from './pages/BrandProducts/BrandProducts';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
+import Update from './pages/Update/Update';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
 
       {
@@ -40,6 +43,11 @@ const router = createBrowserRouter([
       {
         path:"/detail/:id",
         element:<ProductDetail></ProductDetail>,
+      },
+      {
+        path:"/update/:id",
+        element:<Update></Update>,
+        loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
           path: "/cart",
