@@ -36,7 +36,7 @@ const Login = () => {
       // Show an error message using SweetAlert
       Swal.fire({
         title: 'Error!',
-        text: 'Login Again',
+        text: 'Email or password doesn\'t match. Please try again.',
         icon: 'error',
         confirmButtonText: 'ok'
       });
@@ -60,7 +60,7 @@ const handleGoogleSignIn = () =>{
         console.log(error.message);
         Swal.fire({
             title: 'Error!',
-            text: 'Login Again',
+            text: 'Google sign-in failed. Please try again.',
             icon: 'error',
             confirmButtonText: 'ok'
           });
