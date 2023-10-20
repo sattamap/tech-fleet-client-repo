@@ -11,7 +11,7 @@ const ProductDetail = () => {
     
     const handleAddToCart = () => {
         // Assuming you have a server route to add the product to the cart
-        fetch("http://localhost:5000/cart", {
+        fetch("https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/cart", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

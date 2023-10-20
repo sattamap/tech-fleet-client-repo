@@ -18,7 +18,7 @@ const AddProduct = () => {
     const newProduct = { image, name, bandName, type, price, description,rating};
 
     console.log(newProduct);
-    fetch("http://localhost:5000/products", {
+    fetch("https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -108,11 +108,7 @@ const AddProduct = () => {
               className="input input-bordered"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
+           
           </div>
           <div className="form-control">
             <label className="label">
@@ -125,11 +121,7 @@ const AddProduct = () => {
               className="input input-bordered"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
+         
           </div>
           <div className="form-control">
             <label className="label">
@@ -142,11 +134,7 @@ const AddProduct = () => {
               className="input input-bordered"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
+          
           </div>
           <div className="form-control">
   <label className="label">

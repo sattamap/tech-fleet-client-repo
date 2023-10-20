@@ -58,7 +58,7 @@ const AuthProvider = ({children}) => {
             setLoading(false);
           });
 
-          fetch("http://localhost:5000/products")
+          fetch("https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/products")
           .then((response) => response.json())
           .then((data) => {
             setProducts(data);

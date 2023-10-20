@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
           path: "/",
           element: <Home></Home>,
-          loader: ()=> fetch('http://localhost:5000/brand'),
+          loader: ()=> fetch('https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/brand'),
       },
       {
           path: "/product",
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       {
         path:"/update/:id",
         element: <ProtectedRoutes><Update></Update></ProtectedRoutes>,
-        loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({params})=> fetch(`https://tech-fleet-server-2sitqju6h-sattam-chakmas-projects.vercel.app/products/${params.id}`),
       },
       {
           path: "/cart",
