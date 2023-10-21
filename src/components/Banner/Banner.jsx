@@ -16,13 +16,13 @@ const Banner = () => {
       <a href="#slide3" className="btn btn-circle">❮</a>
       <a href="#slide2" className="btn btn-circle">❯</a>  
     </div>
-    <div className="max-w-md absolute  right-52 top-1/3" >
+    <div className="max-w-md absolute text-center right-20  md:right-52  top-1/3" >
       <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"><h1 className="text-5xl font-bold text-red-700">Explore the Latest Innovations</h1></div>
+     data-aos-duration="2000"><h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-red-700">Explore the Latest Innovations</h1></div>
       <div data-aos="fade-down"
      data-aos-easing="linear"
-     data-aos-duration="1500"> <p className="py-6">We are ready to find your perfect technology.Simplify your life with Google tech solutions</p>
+     data-aos-duration="1500"> <p className="py-6 text-sm lg:text-lg text-white">We are ready to find your perfect technology.Simplify your life with Google tech solutions</p>
       <button className="btn btn-primary">Let Get Started</button></div>
     </div>
     
@@ -34,13 +34,13 @@ const Banner = () => {
       <a href="#slide1" className="btn btn-circle">❮</a> 
       <a href="#slide3" className="btn btn-circle">❯</a>
     </div>
-    <div className="max-w-md absolute  right-52 top-1/3" >
+    <div className="max-w-md absolute   text-center right-20  md:right-52  top-1/3" >
       <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"><h1 className="text-5xl font-bold text-fuchsia-900">Power Your Devices with Intel and Microsoft</h1></div>
+     data-aos-duration="2000"><h1 className="text-lg md:text-3xl lg:text-5xl font-bold text-fuchsia-900">Power Your Devices with Intel and Microsoft</h1></div>
       <div data-aos="fade-down"
      data-aos-easing="linear"
-     data-aos-duration="1500"> <p className="py-6">We are ready to find your perfect technology.Intel and Microsoft: Your tech partners for life</p>
+     data-aos-duration="1500"> <p className="py-6 text-sm lg:text-lg">We are ready to find your perfect technology.Intel and Microsoft: Your tech partners for life</p>
       <button className="btn btn-primary">Let Get Started</button></div>
     </div>
   </div> 
@@ -50,13 +50,13 @@ const Banner = () => {
       <a href="#slide2" className="btn btn-circle">❮</a> 
       <a href="#slide1" className="btn btn-circle">❯</a>
     </div>
-    <div className="max-w-md absolute  right-52 top-1/3" >
+    <div className="max-w-md absolute  text-center right-20  md:right-52  top-1/3" >
       <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"><h1 className="text-5xl font-bold">Discover Cutting-Edge Technology</h1></div>
+     data-aos-duration="2000"><h1 className="text-lg md:text-3xl lg:text-5xl font-bold">Discover Cutting-Edge Technology</h1></div>
       <div data-aos="fade-down"
      data-aos-easing="linear"
-     data-aos-duration="1500"> <p className="py-6">We are ready to find your perfect technology.Elevate your tech game with devices. </p>
+     data-aos-duration="1500"> <p className="py-6 text-sm lg:text-lg">We are ready to find your perfect technology.Elevate your tech game with devices. </p>
       <button className="btn btn-primary">Let Get Started</button></div>
     </div>
   </div> 

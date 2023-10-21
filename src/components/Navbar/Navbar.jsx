@@ -6,87 +6,86 @@ import logo from '../../assets/logo.png';
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 
+
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
    
+  
     const handleLogOut = () => {
-        logOut()
-          .then(result => {
-            console.log(result.user);
-    
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      }
+      logOut()
+        .then(result => {
+          console.log(result.user);
+  
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+  
+  
     return (
-        <div>
-           <div className="max-w-[1300px] mx-auto navbar py-14">
-            <div className="flex-1">
-                <img  src={logo} alt="" className="w-10" />
-                <h1 className="text-2xl font-extrabold">Tech<span className=" text-emerald-600">Fleet</span></h1>
+      <div>
+        <div className="navbar bg-base-100  top-0 w-full shadow-md z-10 p-10">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+              </label>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><NavLink to="/"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
+                            }>Home</NavLink></li>
+                <li><NavLink to="/product"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
+                            }>Add Product</NavLink></li>
+                <li><NavLink to="/cart"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
+                            }>My Cart</NavLink></li>
+                <li><NavLink    to="/login"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
+                            }>Login</NavLink></li>
+              </ul>
             </div>
-            <div className="flex-none">
-                <ul className="menu menu-horizontal px-1">
-                    <li>
-                        <NavLink
-                            to="/"
+            <div className="flex">
+                 <img  src={logo} alt="" className="w-10" />
+                 <h1 className="text-2xl font-extrabold">Tech<span className=" text-emerald-600">Fleet</span></h1>
+             </div>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+            <li><NavLink to="/"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
-                            }
-                        >
-                            Home
-                        </NavLink>
-
-                    </li>
-
-                    <li>
-                        <NavLink
-                            to="/product"
+                            }>Home</NavLink></li>
+                <li><NavLink to="/product"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
-                            }
-                        >
-                            Add Product
-                        </NavLink>
-
-
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/cart"
+                            }>Add Product</NavLink></li>
+                <li><NavLink to="/cart"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
-                            }
-                        >
-                            My Cart
-                        </NavLink>
-
-
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/login"
+                            }>My Cart</NavLink></li>
+                <li><NavLink    to="/login"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
-                            }
-                        >
-                            Login
-                        </NavLink>
-
-
-                    </li>
-                </ul>
-
-            </div>
-            
-        <div className="navbar-end">
-
-
-
-{user ? (
+                            }>Login</NavLink></li>
+            </ul>
+          </div>
+  
+  
+  
+          <div className="navbar-end">
+  
+  
+  
+           {user ? (
   // If the user is logged in, show their profile picture, first name, and a logout button
   <div className="nav-item">
     {user.photoURL ? (

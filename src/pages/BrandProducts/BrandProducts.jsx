@@ -35,7 +35,7 @@ const BrandProducts = () => {
     }, [brandName]);
 
     return (
-        <div>
+        <div className='mt-10'>
    
 
 <Carousel

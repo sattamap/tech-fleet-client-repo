@@ -6,8 +6,8 @@ const BrandCard = ({ brand }) => {
     return (
         <div>
            <Link to={`/products/${name}`}>
-           <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img src={imageURL} alt="Shoes" /></figure>
+           <div className="card  lg:w-96 bg-base-100 shadow-xl">
+                <figure><img src={imageURL} alt="Shoes" className="" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                     
