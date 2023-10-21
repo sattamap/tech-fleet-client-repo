@@ -9,9 +9,15 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut,isDarkMode } = useContext(AuthContext);
    
-  
+
+  const navbarClass = isDarkMode ? " text-black" : "bg-[#333] text-white";
+//   const linkClass = isDarkMode ? "link link-hover text-emerald-600" : "link link-hover text-blue-600";
+
+//   "bg-gray-400 text-base-100" : "bg-[#333] text-base-content"
+//   {footerClass + " mt-28"}
+//   {`text-2xl font-extrabold ${titleClass}`}
     const handleLogOut = () => {
       logOut()
         .then(result => {
@@ -26,7 +32,7 @@ const Navbar = () => {
   
     return (
       <div>
-        <div className="navbar bg-base-100  top-0 w-full shadow-md z-10 p-10">
+        <div className= {`navbar bg-base-100 top-0 w-full shadow-md z-10 p-10 ${navbarClass}`} >
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -59,7 +65,7 @@ const Navbar = () => {
              </div>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 font-semibold">
             <li><NavLink to="/"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending font-normal" : isActive ? "text-[#FF444A] font-bold underline" : ""
@@ -102,7 +108,7 @@ const Navbar = () => {
     </span>
     <button className="btn btn-secondary mx-2" onClick={handleLogOut}>
       Logout
-    </button> <Link to="/register" className="btn btn-primary">
+    </button> <Link to="/register" className="btn btn-accent">
       Register
     </Link>
   </div>
@@ -117,7 +123,7 @@ const Navbar = () => {
       </div>
     </label>
    
-    <Link to="/register" className="btn btn-primary">
+    <Link to="/register" className="btn btn-accent">
       Register
     </Link>
     <ThemeToggle></ThemeToggle>
