@@ -1,28 +1,38 @@
 
-// import { useAuth } from "./AuthContext";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const ThemeToggle = () => {
-    // const { isDarkMode, toggleTheme } = useAuth();
-    const {isDarkMode, toggleTheme} = useContext(AuthContext);
+  const { isDarkMode, toggleTheme } = useContext(AuthContext);
 
-    const toggleAppTheme = () => {
-        const appContainer = document.getElementById("root"); // Replace with the actual ID of your app's root container
-        if (appContainer) {
-          appContainer.classList.toggle("dark-mode", isDarkMode);
-        }
-        toggleTheme();
-      };
-    
-      return (
-        <button onClick={toggleAppTheme}>
+  const toggleAppTheme = () => {
+    const appContainer = document.getElementById("root"); // Replace with the actual ID of your app's root container
+    if (appContainer) {
+      appContainer.classList.toggle("dark-mode", isDarkMode);
+    }
+    toggleTheme();
+  };
+
+  return (
+    <>
+    <div className="form-control">
+      <label className="label cursor-pointer">
+        <span className="label-text">
           {isDarkMode ? "Dark Mode" : "Light Mode"}
-        </button>
-      );
-    };
+        </span>
+        <input
+          type="checkbox"
+          className={`toggle ${isDarkMode ? "toggle-checked" : ""}`}
+          onClick={toggleAppTheme}
+        />
+      </label>
+    </div>
+    </>
     
-    export default ThemeToggle;
+  );
+};
+
+export default ThemeToggle;
     
     
     

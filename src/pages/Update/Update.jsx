@@ -40,11 +40,7 @@ const Update = () => {
                         icon: 'success',
                         confirmButtonText: 'ok'
                       })
-                      
-                    //   .then(() => {
-                    //     // After updating, navigate back to the BrandProducts page
-                    //     window.location.reload();
-                    // });
+                    
                 }
             })
 

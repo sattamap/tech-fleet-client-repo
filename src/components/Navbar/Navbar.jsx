@@ -93,7 +93,7 @@ const Navbar = () => {
   
            {user ? (
   // If the user is logged in, show their profile picture, first name, and a logout button
-  <div className="nav-item">
+  <div className="nav-item flex">
     {user.photoURL ? (
       <img
         src={user.photoURL}
@@ -108,15 +108,14 @@ const Navbar = () => {
     </span>
     <button className="btn btn-secondary mx-2" onClick={handleLogOut}>
       Logout
-    </button> <Link to="/register" className="btn btn-accent">
-      Register
-    </Link>
+    </button> 
+    <ThemeToggle></ThemeToggle>
   </div>
 ) : (
   // If the user is not logged in, show the login button
 
 
-  <div className="nav-item">
+  <div className="nav-item flex">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
       <div>
         <FaUserAlt></FaUserAlt>

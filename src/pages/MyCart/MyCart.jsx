@@ -1,25 +1,35 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const MyCart = () => {
     
     const [loading, setLoading] = useState(true);
     const [carts, setCarts] = useState([]);
+    const {user} = useContext(AuthContext);
 
     
     
     useEffect(() => {
+        console.log(user);
         fetch("http://localhost:5000/carts")
             .then((response) => response.json())
             .then((data) => {
-                // console.log("Cart Data:", data);
-                // Update the cart data in your context provider
-                // Assuming you have a function to set the cart data in your context
-                // Replace 'setCartDataInContext' with the actual function name
-                setCarts(data);
-                setLoading(false);
+                const filteredData = data.filter((item) => item?.userEmail === user.email);
+                if (filteredData.length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No Products Available',
+                        text: 'There are no products available for this brand.',
+                    });
+                } else {
+                    setCarts(filteredData);    
+                    setLoading(false);
+                }
             })
+                
+           
             .catch((error) => {
                 console.error("Error fetching carts:", error);
             });
