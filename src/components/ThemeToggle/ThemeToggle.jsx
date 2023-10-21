@@ -17,7 +17,7 @@ const ThemeToggle = () => {
     <>
     <div className="form-control">
       <label className="label cursor-pointer">
-        <span className="label-text">
+        <span className="mr-2 text-slate-600">
           {isDarkMode ? "Dark Mode" : "Light Mode"}
         </span>
         <input

@@ -36,11 +36,14 @@ const ProductDetail = () => {
     const handleAddToCart = () => {
         const userEmail = user.email; // Replace 'user.email' with the actual path to the user's email in your context
 
-        // Create the cart data with user email
-        const cartData = {
-          ...productDetail,
-          userEmail,
-        };
+        // Create a new cartData object by spreading the properties of productDetail
+        const cartData = { ...productDetail };
+      
+        // Remove the _id property from cartData
+        delete cartData._id;
+      
+        // Add the user's email to the cartData
+        cartData.userEmail = userEmail;
         // console.log(user);
         // Assuming you have a server route to add the product to the cart
         fetch("http://localhost:5000/carts", {

@@ -39,8 +39,8 @@ const MyCart = () => {
         return <div>Loading...</div>;
     }
 
-    const handleDelete = id =>{
-         console.log('want to delete:',id);
+    const handleDelete = name =>{
+         console.log('want to delete:',name);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -51,7 +51,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${id}`,{
+                fetch(`http://localhost:5000/cart/${name}`,{
                     method: 'DELETE'
                 })
         
@@ -64,7 +64,7 @@ const MyCart = () => {
                                 'Your file has been deleted.',
                                 'success'
                               )
-                            const remaining = carts.filter(cart => cart._id!== id);
+                            const remaining = carts.filter(cart => cart.name !== name);
                             setCarts(remaining);
                         }
                     })
@@ -108,7 +108,7 @@ const MyCart = () => {
                                 <td>{cart.type}{cart._id}</td>
                                 <td>{cart.price}</td>
                                 <th>
-                                    <button onClick={ () => handleDelete(cart._id)} className="btn btn-ghost btn-xs">Delete</button>
+                                    <button onClick={ () => handleDelete(cart.name)} className="btn btn-ghost btn-xs">Delete</button>
                                 </th>
                             </tr>
                         </tbody>

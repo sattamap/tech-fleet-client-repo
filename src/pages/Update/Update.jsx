@@ -49,7 +49,7 @@ const Update = () => {
 
     return (
         <div>
-        <h2 className="text-xl text-center">Add Product</h2>
+        <h2 className="text-xl text-center">UpdateProduct</h2>
         <form
           onSubmit={handleUpdateProduct}
           className="card-body md:w-3/4 lg:w-1/2 mx-auto"
