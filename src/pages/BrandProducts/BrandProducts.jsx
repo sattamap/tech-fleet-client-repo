@@ -77,7 +77,7 @@ const BrandProducts = () => {
   }
 >
   {productImages.map((image, index) => (
-    <div key={index} className="w-96 h-64 flex items-center justify-center">
+    <div key={index} className="w-96 h-64  flex items-center justify-center">
       <img
         src={image}
         alt={`Product ${index}`}

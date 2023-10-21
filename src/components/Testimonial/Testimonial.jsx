@@ -22,20 +22,7 @@ const Testimonial = () => {
         dynamicHeight={false} // Adjust slide height dynamically
         centerMode={true} // Center the current slide
         centerSlidePercentage={33} // Set the percentage width of the center slide
-        renderArrowPrev={(onClickHandler, hasPrev, label) =>
-          hasPrev && (
-            <button type="button" onClick={onClickHandler} title={label} className="absolute left-96 -bottom-3 transform -translate-y-1/2 z-10">
-              Previous
-            </button>
-          )
-        }
-        renderArrowNext={(onClickHandler, hasNext, label) =>
-          hasNext && (
-            <button type="button" onClick={onClickHandler} title={label} className="absolute right-96 -bottom-3 transform -translate-y-1/2 z-10">
-              Next
-            </button>
-          )
-        }
+    
         
       >
         <div className='border rounded-xl shadow-xl p-6 mx-2'>

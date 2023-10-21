@@ -67,7 +67,7 @@ const FeaturedProducts = () => {
 <div key={item._id} className="card w-72 bg-base-100 shadow-xl">
 <figure><img src={item.image} alt="Shoes" /></figure>
 <div className="card-body">
-    <h2 className="card-title">
+    <h2 className="card-title text-base text-black">
         {item.name}
         <div className="badge badge-secondary">Featured</div>
     </h2>

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaUserAlt } from 'react-icons/fa';
 import logo from '../../assets/logo.png';
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 
 const Navbar = () => {
@@ -120,6 +121,7 @@ const Navbar = () => {
     <Link to="/register" className="btn btn-primary">
       Register
     </Link>
+    <ThemeToggle></ThemeToggle>
   </div>
 
 )}
