@@ -1,5 +1,6 @@
 
 import { FaStar, FaStarHalf, FaRegStar } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const StarRating = ({ rating }) => {
   const MAX_STARS = 5; // Maximum rating stars
@@ -24,4 +25,7 @@ const StarRating = ({ rating }) => {
   return <div className="star-rating flex">{stars}</div>;
 };
 
+StarRating.propTypes = {
+    rating: PropTypes.node,
+}
 export default StarRating;
